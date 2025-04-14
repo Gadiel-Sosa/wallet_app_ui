@@ -28,17 +28,32 @@ class MyCard extends StatelessWidget {
             color: color, borderRadius: BorderRadius.circular(17)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Balance',
-              style: TextStyle(color: Colors.white),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Balance',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                Image.asset(
+                  'lib/wallet/visa.png',
+                  height: 50,
+                )
+              ],
             ),
             SizedBox(
               height: 10,
             ),
             Text(
               '\$$balance',
-              style: TextStyle(color: Colors.white, fontSize: 30),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 20,

@@ -20,7 +20,7 @@ class MyButton extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade400,
-                  blurRadius: 40,
+                  blurRadius: 30,
                   spreadRadius: 10,
                 )
               ]),
@@ -29,7 +29,7 @@ class MyButton extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 12,
+          height: 4,
         ),
         Text(
           imageText,

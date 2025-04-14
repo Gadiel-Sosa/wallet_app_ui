@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:wallet_app_ui/pages/settings_page.dart';
 import 'package:wallet_app_ui/utils/my_button.dart';
 import 'package:wallet_app_ui/utils/my_card.dart';
+import 'package:wallet_app_ui/utils/my_list_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +19,58 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
+      floatingActionButton: FloatingActionButton.large(
+        onPressed: () {},
+        shape: const CircleBorder(),
+        backgroundColor: Colors.pink,
+        child: Icon(
+          Icons.monetization_on,
+          size: 32,
+          color: Colors.white,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.grey[200],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    _controller.animateToPage(0,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Back to home'),
+                        duration: Duration(seconds: 1),
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.home,
+                    size: 40,
+                    color: Colors.pink[300],
+                  )),
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsPage()),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.settings,
+                    size: 40,
+                    color: Colors.grey[600],
+                  ))
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -73,21 +127,21 @@ class _HomePageState extends State<HomePage> {
                     cardNumber: 123456,
                     expirationMonth: 12,
                     expirationYear: 25,
-                    color: Colors.deepPurple[200],
+                    color: Colors.deepPurple[400],
                   ),
                   MyCard(
                     balance: 3450.70,
                     cardNumber: 748290,
                     expirationMonth: 05,
                     expirationYear: 26,
-                    color: Colors.lightBlue[200],
+                    color: Colors.red[400],
                   ),
                   MyCard(
                     balance: 22356.70,
                     cardNumber: 926016,
                     expirationMonth: 11,
                     expirationYear: 29,
-                    color: Colors.pink[200],
+                    color: Colors.black,
                   )
                 ],
               ),
@@ -104,7 +158,7 @@ class _HomePageState extends State<HomePage> {
               effect: ExpandingDotsEffect(activeDotColor: Colors.grey.shade700),
             ),
             SizedBox(
-              height: 25,
+              height: 40,
             ),
 
             //* 3 botones --> send + pay + bill
@@ -128,56 +182,29 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              height: 25,
+              height: 40,
             ),
 
             //* stats + trasnsactions
             Padding(
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
                 children: [
                   //* Statistics
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          //* Icon
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(12)),
-                            height: 80,
-                            padding: const EdgeInsets.all(12),
-                            child: Image.asset('lib/status/statistic.png'),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Sattistics',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                'Payments and Icome',
-                                style: TextStyle(
-                                    fontSize: 16, color: Colors.grey[700]),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Icon(Icons
-                          .arrow_forward_ios) //*Me quedé aquí antes de encapsular todo esto
-                    ],
-                  )
+                  MyListTile(
+                      pathImage: 'lib/status/statistic.png',
+                      tileName: 'Statistics',
+                      tileSubName: 'Payments and income'),
+
+                  //* Transactions
+                  MyListTile(
+                      pathImage: 'lib/status/cash-flow.png',
+                      tileName: 'Transactions',
+                      tileSubName: 'Transactions history'),
+                  MyListTile(
+                      pathImage: 'lib/status/el-tiempo-es-dinero.png',
+                      tileName: 'Investments',
+                      tileSubName: 'Your money working for you'),
                 ],
               ),
             )
