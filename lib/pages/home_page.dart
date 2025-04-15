@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:wallet_app_ui/pages/quick_transfer_page.dart';
 import 'package:wallet_app_ui/pages/settings_page.dart';
 import 'package:wallet_app_ui/utils/my_button.dart';
 import 'package:wallet_app_ui/utils/my_card.dart';
@@ -20,7 +21,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       floatingActionButton: FloatingActionButton.large(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const QuickTransferPage()));
+        },
         shape: const CircleBorder(),
         backgroundColor: Colors.pink,
         child: Icon(
