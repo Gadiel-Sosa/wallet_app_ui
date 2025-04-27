@@ -1,0 +1,2 @@
+C:/Users/sosac/Desktop/Topicos_proyectos/wallet_app/wallet_app_ui/android/app/.cxx/Debug/wbt2c629/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/sosac/Desktop/Topicos_proyectos/wallet_app/wallet_app_ui/android/app/.cxx/Debug/wbt2c629/arm64-v8a/CMakeFiles/rebuild_cache.dir

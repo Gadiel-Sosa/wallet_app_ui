@@ -6,32 +6,41 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //* Crea una AppBar en la parte superior de la pantalla.
       appBar: AppBar(
+        //* Título que aparece en la AppBar.
         title: const Text('Settings'),
+        //* Color de fondo de la AppBar.
         backgroundColor: Colors.deepPurple,
       ),
+      //* Cuerpo principal de la pantalla que contiene una lista desplazable.
       body: ListView(
         children: const [
+          //* Primer elemento de la lista: "Account"
           ListTile(
             leading: Icon(Icons.person),
             title: Text('Account'),
             subtitle: Text('Manage your account'),
           ),
           ListTile(
+            //* Segundo elemento de la lista: "Notifications"
             leading: Icon(Icons.notifications),
             title: Text('Notifications'),
             subtitle: Text('Notification preferences'),
           ),
+          //* Tercer elemento: "Security Settings"
           ListTile(
             leading: Icon(Icons.security),
             title: Text('Security Settings'),
             subtitle: Text('Change PIN or enable fingerprint'),
           ),
+          //* Cuarto elemento: "Privacy"
           ListTile(
             leading: Icon(Icons.lock),
             title: Text('Privacy'),
             subtitle: Text('Privacy and security'),
           ),
+          //* Quinto elemento: "Linked Bank Accounts"
           ListTile(
             leading: Icon(Icons.account_balance),
             title: Text('Linked Bank Accounts'),
